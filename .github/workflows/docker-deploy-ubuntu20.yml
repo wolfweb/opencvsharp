@@ -11,6 +11,7 @@ env:
   DEBIAN_FRONTEND: noninteractive
   DOCKER_IMAGE_NAME1: "ubuntu22-dotnet6-opencv4.7.0"
   DOCKER_IMAGE_NAME2: "ubuntu22-dotnet6sdk-opencv4.7.0"
+  DOCKER_IMAGE_NAME3: "ubuntu22-dotnet8sdk-opencv4.8.0"
 
 jobs:
   build:
@@ -31,18 +32,24 @@ jobs:
       - name: docker build 1
         run: |
           cd docker/${DOCKER_IMAGE_NAME1}
-          docker build -t ghcr.io/shimat/opencvsharp/${DOCKER_IMAGE_NAME1}:${{ github.event.inputs.docker_image_tag }} .
+          docker build -t ghcr.io/wolfweb/opencvsharp/${DOCKER_IMAGE_NAME1}:${{ github.event.inputs.docker_image_tag }} .
 
       - name: docker build 2
         run: |
           cd docker/${DOCKER_IMAGE_NAME2}
-          docker build -t ghcr.io/shimat/opencvsharp/${DOCKER_IMAGE_NAME2}:${{ github.event.inputs.docker_image_tag }} .
+          docker build -t ghcr.io/wolfweb/opencvsharp/${DOCKER_IMAGE_NAME2}:${{ github.event.inputs.docker_image_tag }} .
+      
+      - name: docker build 3
+        run: |
+          cd docker/${DOCKER_IMAGE_NAME3}
+          docker build -t ghcr.io/wolfweb/opencvsharp/${DOCKER_IMAGE_NAME3}:${{ github.event.inputs.docker_image_tag }} .
 
       - name: docker login
         run: |
-          echo ${{secrets.GH_PACKAGES_PAT}} | docker login ghcr.io -u shimat --password-stdin
+          echo ${{secrets.GH_PACKAGES_PAT}} | docker login ghcr.io -u wolfweb --password-stdin
 
       - name: docker push
         run: |
-          docker push ghcr.io/shimat/opencvsharp/${DOCKER_IMAGE_NAME1}:${{ github.event.inputs.docker_image_tag }}
-          docker push ghcr.io/shimat/opencvsharp/${DOCKER_IMAGE_NAME2}:${{ github.event.inputs.docker_image_tag }}
+          docker push ghcr.io/wolfweb/opencvsharp/${DOCKER_IMAGE_NAME1}:${{ github.event.inputs.docker_image_tag }}
+          docker push ghcr.io/wolfweb/opencvsharp/${DOCKER_IMAGE_NAME2}:${{ github.event.inputs.docker_image_tag }}
+          docker push ghcr.io/wolfweb/opencvsharp/${DOCKER_IMAGE_NAME3}:${{ github.event.inputs.docker_image_tag }}

@@ -1,8 +1,8 @@
 $tag = "4.10.0.20240612"
 $version = "4100"
 $uriArray = @(
-    "https://github.com/shimat/opencv_files/releases/download/${tag}/opencv${version}_win_x64.zip"
-    "https://github.com/shimat/opencv_files/releases/download/${tag}/opencv${version}_win_x86.zip"
+    "https://github.com/wolfweb/opencv_files/releases/download/${tag}/opencv${version}_win_x64.zip"
+    "https://github.com/wolfweb/opencv_files/releases/download/${tag}/opencv${version}_win_x86.zip"
 )
 
 function Download($uri, $outFile) {

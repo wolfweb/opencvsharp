@@ -93,7 +93,7 @@ RUN cd opencv && mkdir build && cd build && \
     .. && make -j6 && make install && ldconfig
 
 # Download OpenCvSharp
-RUN git clone https://github.com/shimat/opencvsharp.git && cd opencvsharp
+RUN git clone https://github.com/wolfweb/opencvsharp.git && cd opencvsharp
 
 # Install the Extern lib.
 RUN mkdir /opencvsharp/make && cd /opencvsharp/make && \

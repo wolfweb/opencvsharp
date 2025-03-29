@@ -88,7 +88,7 @@ RUN cd opencv && mkdir build && cd build && \
     .. && make -j$(nproc) && make install && ldconfig
 
 # Download OpenCvSharp
-RUN git clone https://github.com/shimat/opencvsharp.git && cd opencvsharp
+RUN git clone https://github.com/wolfweb/opencvsharp.git && cd opencvsharp
 
 # Install the Extern lib.
 RUN mkdir /opencvsharp/make && cd /opencvsharp/make && \
@@ -127,7 +127,7 @@ int main(){ \n\
 FROM mcr.microsoft.com/dotnet/sdk:6.0-jammy
 COPY --from=builder /usr/lib /usr/lib
 # Install Build the C# part of OpenCvSharp
-RUN git clone https://github.com/shimat/opencvsharp.git && cd opencvsharp
+RUN git clone https://github.com/wolfweb/opencvsharp.git && cd opencvsharp
 RUN cd /opencvsharp/src/OpenCvSharp && \
     dotnet build -c Release -f net6.0 && \
     cd /opencvsharp/src/OpenCvSharp.Extensions && \

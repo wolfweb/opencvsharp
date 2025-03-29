@@ -61,7 +61,7 @@ RUN cd opencv && mkdir build && cd build && \
     .. && make -j$(nproc) && make install
 
 # Download OpenCvSharp
-RUN wget https://github.com/shimat/opencvsharp/archive/master.zip && \
+RUN wget https://github.com/wolfweb/opencvsharp/archive/master.zip && \
     unzip master.zip && rm master.zip && \
     mv opencvsharp-master opencvsharp && \
     cd opencvsharp
